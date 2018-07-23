@@ -3,6 +3,8 @@ package com.pkgChatLayout;
 import com.staticMethods;
 
 import com.vaadin.server.VaadinService;
+import com.vaadin.ui.AbsoluteLayout;
+import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
@@ -25,7 +27,7 @@ import java.sql.Types;
 */
 
 
-public class MessageListLayout extends VerticalLayout
+public class MessageListLayout extends AbsoluteLayout
 {
 //Полный путь к загруженному файлу
 String sfilepath;
@@ -47,6 +49,14 @@ HorizontalLayout hlayout21 = new HorizontalLayout();
 HorizontalLayout hlayout22 = new HorizontalLayout();
 HorizontalLayout hlayout23 = new HorizontalLayout();
 
+hlayout21.setHeight("20px");
+hlayout22.setHeight("300px");
+hlayout23.setHeight("85px");
+
+addComponent(hlayout21, "left: 0px; top: 0px;");
+addComponent(hlayout22, "left: 0px; top: 20px;");
+addComponent(hlayout23, "right: 0px; bottom: 0px;");
+
 hlayout21.setWidth("100%");
 hlayout22.setWidth("100%");
 hlayout23.setWidth("100%");
@@ -66,11 +76,7 @@ hlayout22.addComponent(MsgListTable1);
 
 /* hlayout23 */
 
-Button SendMessageButton = new Button("Отправить");
-TextArea MessageTextArea = new TextArea();
-MessageTextArea.setWidth("100%");
-MessageTextArea.setRows(1);
-//MessageTextArea.setSizeFull();
+
 
 /* UploadReceiver - BEGIN */
 class UploadReceiver implements Upload.Receiver, Upload.SucceededListener
@@ -143,7 +149,7 @@ Upload1.addSucceededListener(receiver);
 Upload1.addStartedListener(receiver);
 Upload1.addStyleName("HiddenUploadButton");
 Upload1.setButtonCaption(null);
-
+Upload1.setCaption(""); // Прячем "Upload image here"
 Upload1.addStartedListener(new Upload.StartedListener()
 {
 Integer MaximumFileUploadSizeInBytes = 10485760;
@@ -263,20 +269,38 @@ sfilename = null;
 
 /* Upload - END */
 
+Button SendMessageButton = new Button("Отправить");
+Button CancelFileSelectionButton = new Button ("Clean");
+
+CancelFileSelectionButton.addClickListener(new Button.ClickListener()
+{
+@Override public void buttonClick(Button.ClickEvent clickEvent)
+{
+Upload1.
+}
+});
+
+
+TextArea MessageTextArea = new TextArea();
+//MessageTextArea.setWidth("100%");
+MessageTextArea.setRows(1);
+//MessageTextArea.setSizeFull();
 HorizontalLayout MessageTextAreaLayout = new HorizontalLayout();
 HorizontalLayout MessageTextAreaLayoutLeftLayout= new HorizontalLayout();
-MessageTextAreaLayoutLeftLayout.setWidth("450px");
-MessageTextArea.setHeight("70px");
-MessageTextArea.setWidth ("400px");
+MessageTextAreaLayoutLeftLayout.setWidth("800px");
+MessageTextArea.setHeight("75px");
+MessageTextArea.setWidth ("800px");
 MessageTextAreaLayoutLeftLayout.addComponent(MessageTextArea);
 
 VerticalLayout MessageTextAreaLayoutRightLayout = new VerticalLayout();
 MessageTextAreaLayoutRightLayout.setWidth("100px");
 Upload1.setWidth("100px");
 SendMessageButton.setWidth("100px");
+CancelFileSelectionButton.setWidth("100px");
 
 MessageTextAreaLayoutRightLayout.addComponent(Upload1);
-MessageTextAreaLayoutRightLayout.addComponent(SendMessageButton);
+//MessageTextAreaLayoutRightLayout.addComponent(SendMessageButton);
+MessageTextAreaLayoutRightLayout.addComponent(CancelFileSelectionButton);
 MessageTextAreaLayout.addComponent(MessageTextAreaLayoutLeftLayout);
 MessageTextAreaLayout.addComponent(MessageTextAreaLayoutRightLayout);
 
@@ -331,9 +355,7 @@ TempClass.NewMessageID  = 0;
 
 /* hlayout23 */
 
-addComponent(hlayout21);
-addComponent(hlayout22);
-addComponent(hlayout23);
+
 
 }
 
