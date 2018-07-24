@@ -17,4 +17,7 @@ public static MessageListTable RelMessageListTable;
 
 //ID нового сообщения
 public static Integer NewMessageID;
+
+// Find the application directory - src\main\webapp
+public static String webappfolder;
 }

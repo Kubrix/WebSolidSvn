@@ -5,6 +5,7 @@ import com.vaadin.icons.VaadinIcons;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
+import com.vaadin.server.VaadinService;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.*;
 
@@ -91,7 +92,7 @@ public class loginView extends CustomComponent implements View {
                     }
 
                     TempClass.current_user_id = GetUserIdStmt.getInt(1);
-                    TempClass.second_user_id = null;
+                    TempClass.webappfolder = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
 
                     conn.close();
                 } catch(SQLException SQLe){

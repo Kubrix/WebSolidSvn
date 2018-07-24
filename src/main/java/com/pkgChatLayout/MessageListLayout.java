@@ -76,8 +76,6 @@ hlayout22.addComponent(MsgListTable1);
 
 /* hlayout23 */
 
-
-
 /* UploadReceiver - BEGIN */
 class UploadReceiver implements Upload.Receiver, Upload.SucceededListener
 ,Upload.StartedListener
@@ -109,9 +107,7 @@ ID нужен для создания папки для файла.
 
 if (TempClass.NewMessageID !=0 )
 {
-// Find the application directory - src\main\webapp
-String basepath = VaadinService.getCurrent().getBaseDirectory().getAbsolutePath();
-String uploadfolder = basepath + "\\uploads\\" + String.valueOf(TempClass.NewMessageID) ;
+String uploadfolder = TempClass.webappfolder + "\\uploads\\" + String.valueOf(TempClass.NewMessageID) ;
 
 //Создаем папку для загрузки
 File file1 = new File (uploadfolder);
@@ -270,21 +266,9 @@ sfilename = null;
 /* Upload - END */
 
 Button SendMessageButton = new Button("Отправить");
-Button CancelFileSelectionButton = new Button ("Clean");
-
-CancelFileSelectionButton.addClickListener(new Button.ClickListener()
-{
-@Override public void buttonClick(Button.ClickEvent clickEvent)
-{
-Upload1.
-}
-});
-
 
 TextArea MessageTextArea = new TextArea();
-//MessageTextArea.setWidth("100%");
 MessageTextArea.setRows(1);
-//MessageTextArea.setSizeFull();
 HorizontalLayout MessageTextAreaLayout = new HorizontalLayout();
 HorizontalLayout MessageTextAreaLayoutLeftLayout= new HorizontalLayout();
 MessageTextAreaLayoutLeftLayout.setWidth("800px");
@@ -296,11 +280,9 @@ VerticalLayout MessageTextAreaLayoutRightLayout = new VerticalLayout();
 MessageTextAreaLayoutRightLayout.setWidth("100px");
 Upload1.setWidth("100px");
 SendMessageButton.setWidth("100px");
-CancelFileSelectionButton.setWidth("100px");
 
 MessageTextAreaLayoutRightLayout.addComponent(Upload1);
-//MessageTextAreaLayoutRightLayout.addComponent(SendMessageButton);
-MessageTextAreaLayoutRightLayout.addComponent(CancelFileSelectionButton);
+MessageTextAreaLayoutRightLayout.addComponent(SendMessageButton);
 MessageTextAreaLayout.addComponent(MessageTextAreaLayoutLeftLayout);
 MessageTextAreaLayout.addComponent(MessageTextAreaLayoutRightLayout);
 
@@ -354,8 +336,6 @@ TempClass.NewMessageID  = 0;
 });
 
 /* hlayout23 */
-
-
 
 }
 
