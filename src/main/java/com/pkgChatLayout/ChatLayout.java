@@ -9,7 +9,6 @@ import com.vaadin.ui.VerticalLayout;
 */
 
 @Theme("mytheme")
-
 public class ChatLayout extends VerticalLayout
 {
 public ChatLayout()

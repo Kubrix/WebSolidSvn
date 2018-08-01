@@ -10,6 +10,7 @@ import com.vaadin.ui.VerticalLayout;
 
 public class MessageItem extends VerticalLayout
 {
+
 String ContactPicturePath;
 String MessageText;
 String ContactName;
@@ -111,8 +112,6 @@ public  MessageItem (String vResContactImage, String vMessageText, String vConta
 /* Схема слоев
 [1.1][1.2]
 
-
-
 [1.2.A.1] [1.2.A.2] [1.2.A.3]
 [           1.2.B           ]
 [            1.3           ]
@@ -146,7 +145,9 @@ VerticalLayout MainLayoutMessagePart = new VerticalLayout();
 //1.2.A.3 - дата
 
 HorizontalLayout  MessagePartNameAndDate = new HorizontalLayout();
+
 Label ContactNameLabel = new Label(vContactName);
+Label DateLabel = new Label(vMessageDate);
 
 if (vIncomingMesage == true)
 {
@@ -157,13 +158,24 @@ else
 ContactNameLabel.addStyleName("OutgoingMessageContactNameLabel");
 }
 
-Label NullLabel = new Label();
-Label DateLabel = new Label(vMessageDate);
+VerticalLayout ContactNameLabelLayout = new VerticalLayout();
+VerticalLayout DateLabelLayout = new VerticalLayout();
+VerticalLayout NullLayout = new VerticalLayout();
 
-MessagePartNameAndDate.addComponent(ContactNameLabel);
-MessagePartNameAndDate.addComponent(NullLabel);
-NullLabel.setWidthUndefined();
-MessagePartNameAndDate.addComponent(DateLabel);
+ContactNameLabelLayout.setWidth("300px");
+NullLayout.setWidth("250px");
+DateLabelLayout.setWidth("100px");
+
+ContactNameLabelLayout.addComponent(ContactNameLabel);
+DateLabelLayout.addComponent(DateLabel);
+
+DateLabel.setWidthUndefined();
+ContactNameLabel.setWidthUndefined();
+
+MessagePartNameAndDate.addComponent(ContactNameLabelLayout);
+MessagePartNameAndDate.addComponent(NullLayout);
+MessagePartNameAndDate.addComponent(DateLabelLayout);
+
 
 //1.2.B Текст сообщения
 VerticalLayout MessagePartMessage  = new VerticalLayout();
