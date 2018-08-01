@@ -174,7 +174,7 @@ Upload1.addFailedListener(new Upload.FailedListener()
 @Override public void uploadFailed(Upload.FailedEvent failedEvent)
 {
 
-if (sfilepath.equals(null))
+if (sfilepath==null)
 {
 return;
 }
@@ -221,7 +221,7 @@ Upload1.addSucceededListener(new Upload.SucceededListener()
 {
 @Override public void uploadSucceeded(Upload.SucceededEvent succeededEvent)
 {
-if (sfilepath.equals(null))
+if (sfilepath==null)
 {
 return;
 }
@@ -271,15 +271,15 @@ TextArea MessageTextArea = new TextArea();
 MessageTextArea.setRows(1);
 HorizontalLayout MessageTextAreaLayout = new HorizontalLayout();
 HorizontalLayout MessageTextAreaLayoutLeftLayout= new HorizontalLayout();
-MessageTextAreaLayoutLeftLayout.setWidth("800px");
-MessageTextArea.setHeight("75px");
-MessageTextArea.setWidth ("800px");
+MessageTextAreaLayoutLeftLayout.setWidth("735px");
+MessageTextArea.setHeight("50px");
+MessageTextArea.setWidth ("735px");
 MessageTextAreaLayoutLeftLayout.addComponent(MessageTextArea);
 
 VerticalLayout MessageTextAreaLayoutRightLayout = new VerticalLayout();
-MessageTextAreaLayoutRightLayout.setWidth("100px");
-Upload1.setWidth("100px");
-SendMessageButton.setWidth("100px");
+MessageTextAreaLayoutRightLayout.setWidth("300px");
+Upload1.setWidth("300px");
+SendMessageButton.setWidth("250px");
 
 MessageTextAreaLayoutRightLayout.addComponent(Upload1);
 MessageTextAreaLayoutRightLayout.addComponent(SendMessageButton);

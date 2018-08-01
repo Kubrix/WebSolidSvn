@@ -162,8 +162,9 @@ VerticalLayout ContactNameLabelLayout = new VerticalLayout();
 VerticalLayout DateLabelLayout = new VerticalLayout();
 VerticalLayout NullLayout = new VerticalLayout();
 
+
 ContactNameLabelLayout.setWidth("300px");
-NullLayout.setWidth("250px");
+NullLayout.setWidth("485px");
 DateLabelLayout.setWidth("100px");
 
 ContactNameLabelLayout.addComponent(ContactNameLabel);
