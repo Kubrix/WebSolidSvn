@@ -3,6 +3,7 @@ package com.pkgChatLayout;
 import com.vaadin.server.Resource;
 import com.vaadin.server.ThemeResource;
 import com.vaadin.shared.ui.label.ContentMode;
+import com.vaadin.ui.AbsoluteLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Image;
 import com.vaadin.ui.Label;
@@ -145,6 +146,9 @@ VerticalLayout MainLayoutMessagePart = new VerticalLayout();
 //1.2.A.3 - дата
 
 HorizontalLayout  MessagePartNameAndDate = new HorizontalLayout();
+AbsoluteLayout AL  = new AbsoluteLayout();
+AL.setWidth("700px");
+AL.setHeight("15px");
 
 Label ContactNameLabel = new Label(vContactName);
 Label DateLabel = new Label(vMessageDate);
@@ -173,9 +177,9 @@ DateLabelLayout.addComponent(DateLabel);
 DateLabel.setWidthUndefined();
 ContactNameLabel.setWidthUndefined();
 
-MessagePartNameAndDate.addComponent(ContactNameLabelLayout);
-MessagePartNameAndDate.addComponent(NullLayout);
-MessagePartNameAndDate.addComponent(DateLabelLayout);
+AL.addComponent(ContactNameLabelLayout, "left: 0px; top: 0px;");
+AL.addComponent(DateLabelLayout, "right: 0px; top: 0px;");
+
 
 
 //1.2.B Текст сообщения
@@ -189,7 +193,7 @@ MessagePartMessage.addComponent(MessageTextLabel);
 /* 1.2 Фио + Дата + Сообщение + слой внешних ссылок - END */
 
 //Верхняя часть MainLayoutMessagePart = ФИО/Дата + Сообщение
-MainLayoutMessagePart.addComponent(MessagePartNameAndDate);
+MainLayoutMessagePart.addComponent(AL);
 MainLayoutMessagePart.addComponent(MessagePartMessage);
 
 // 1.3 - Слой внешних ссылок
