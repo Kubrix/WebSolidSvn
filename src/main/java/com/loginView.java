@@ -7,7 +7,6 @@ import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.*;
-import jdk.nashorn.internal.codegen.CompilerConstants;
 
 import java.sql.*;
 
