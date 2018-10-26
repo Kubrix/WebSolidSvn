@@ -79,9 +79,13 @@ public class loginView extends CustomComponent implements View {
                     GetUserIdStmt.setString(2, username);
                     GetUserIdStmt.execute();
 
+                    CallableStatement UpdateUserLoginDateStmt = conn.prepareCall("{call solid.pkg_user.p_update_user_login_date(?)}");
+                    UpdateUserLoginDateStmt.setInt(1, GetUserIdStmt.getInt(1));
+                    UpdateUserLoginDateStmt.execute();
+
                     String OsName = System.getProperty("os.name").toLowerCase();
 
-                    if (OsName.indexOf("windows")>=0)
+                    if (OsName.contains("windows"))
                     {
                     TempClass.FolderSeparateCharacter = "\\";
                     }
