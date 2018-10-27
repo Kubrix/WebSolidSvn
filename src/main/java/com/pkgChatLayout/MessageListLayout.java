@@ -24,7 +24,6 @@ import java.sql.Types;
 * Created by Dmitriy on 24.06.2018.
 */
 
-
 public class MessageListLayout extends VerticalLayout
 {
 //Полный путь к загруженному файлу
@@ -39,8 +38,8 @@ Boolean DeleteUploadedFile = false;
 
 public MessageListLayout()
 {
-sfilepath = null;
-sfilename = null;
+sfilepath = "";
+sfilename = "";
 
 setWidth("100%");
 HorizontalLayout hlayout21 = new HorizontalLayout();
@@ -172,7 +171,7 @@ Upload1.addFailedListener(new Upload.FailedListener()
 @Override public void uploadFailed(Upload.FailedEvent failedEvent)
 {
 
-if (sfilepath.equals(null))
+if (sfilepath.equals(""))
 {
 return;
 }
@@ -197,8 +196,8 @@ Stmt1.setString(4, "Y");
 }
 Stmt1.execute();
 con.close();
-sfilepath = null;
-sfilename = null;
+sfilepath = "";
+sfilename = "";
 
 DeleteUploadedFile = false;
 MsgListTable1.UpdateMessagesList(TempClass.second_user_id);
@@ -207,8 +206,8 @@ catch (Exception exp)
 {
 exp.printStackTrace();
 DeleteUploadedFile = false;
-sfilepath = null;
-sfilename = null;
+sfilepath = "";
+sfilename = "";
 }
 
 }
@@ -219,7 +218,7 @@ Upload1.addSucceededListener(new Upload.SucceededListener()
 {
 @Override public void uploadSucceeded(Upload.SucceededEvent succeededEvent)
 {
-if (sfilepath.equals(null))
+if (sfilepath.equals(""))
 {
 return;
 }
@@ -245,8 +244,9 @@ Stmt1.setString(4, "Y");
 
 Stmt1.execute();
 con.close();
-sfilepath = null;
-sfilename = null;
+sfilepath = "";
+sfilename = "";
+
 DeleteUploadedFile = false;
 MsgListTable1.UpdateMessagesList(TempClass.second_user_id);
 }
@@ -254,8 +254,8 @@ catch (Exception exp)
 {
 exp.printStackTrace();
 DeleteUploadedFile = false;
-sfilepath = null;
-sfilename = null;
+sfilepath = "";
+sfilename = "";
 }
 }
 });
@@ -334,7 +334,6 @@ TempClass.NewMessageID  = 0;
 addComponent(hlayout21);
 addComponent(hlayout22);
 addComponent(hlayout23);
-
 }
 
 }
